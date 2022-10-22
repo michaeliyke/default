@@ -19,13 +19,14 @@
 // You will need to pass through an object with an 
 // allowExpressions Boolean property set to true.
 
-
+require('@google-cloud/debug-agent').start({ allowExpressions: true });
 
 
 // END TODO
 // TODO: Load the error-reporting module
 
-
+onst {ErrorReporting} = require(
+       '@google-cloud/error-reporting');
 
 
 // END TODO
@@ -41,7 +42,7 @@ const app = express();
 // TODO: Create the errorReporting client object
 
 
-
+const errorReporting = new ErrorReporting();
 
 // END TODO
 
@@ -70,7 +71,7 @@ app.get('/', (req, res) => {
 // middleware for Express
 
 
-
+app.use(errorReporting.express);
 
 // END TODO
 
